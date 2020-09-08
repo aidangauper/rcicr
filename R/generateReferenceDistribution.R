@@ -14,10 +14,13 @@ generateReferenceDistribution2IFC <- function(rdata, iter=10000) {
 
   # Load parameter file (created when generating stimuli)
   load(rdata)
+  
+  # Set seed (Aidan)
+  set.seed(2)
 
   # Re-generate stimuli based on rdata parameters in matrix form
   write("Re-generating stimuli based on rdata file, please wait...", stdout())
-  stimuli <- generateStimuli2IFC(base_face_files, n_trials, img_size, seed=2, noise_type=noise_type,ncores=parallel::detectCores()-1, return_as_dataframe=TRUE, save_as_png=FALSE, save_rdata=FALSE)
+  stimuli <- generateStimuli2IFC(base_face_files, n_trials, img_size, seed, noise_type=noise_type,ncores=parallel::detectCores()-1, return_as_dataframe=TRUE, save_as_png=FALSE, save_rdata=FALSE)
 
   # Simulate random responding in 2IFC task with ntrials trials across iter iterations
   write("Computing reference distribution, please wait...", stdout())
