@@ -37,6 +37,8 @@ generateReferenceDistribution2IFC <- function(rdata, iter=10000) {
         
       # set seed
       set.seed(2)
+      
+      print('aidan!')
     
       # Generate random responses for this iteration
       responses <- (purrr::rbernoulli(n_trials, p=0.5) * 2) - 1
