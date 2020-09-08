@@ -14,9 +14,6 @@ generateReferenceDistribution2IFC <- function(rdata, iter=10000) {
 
   # Load parameter file (created when generating stimuli)
   load(rdata)
-  
-  # Set seed (Aidan)
-  set.seed(2)
 
   # Re-generate stimuli based on rdata parameters in matrix form
   write("Re-generating stimuli based on rdata file, please wait...", stdout())
@@ -37,7 +34,10 @@ generateReferenceDistribution2IFC <- function(rdata, iter=10000) {
 
   for (i in 1:iter) {
       pb$tick()$print()
-
+        
+      # set seed
+      set.seed(2)
+    
       # Generate random responses for this iteration
       responses <- (purrr::rbernoulli(n_trials, p=0.5) * 2) - 1
 
